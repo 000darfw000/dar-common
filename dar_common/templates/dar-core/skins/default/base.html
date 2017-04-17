@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Django Applications Robot">
+        <meta name="author" content="Ariel Calzada - ariel.calzada@gmail.com">
+        <meta name="keywords" content="web,django,html,css,000paradox000,javascript,python,linux,jquery,bootstrap">
+
+        <title>{{ WINDOW_TITLE }}</title>
+
+        <link href="{% static 'favicon/favicon.png' %}" rel="icon">
+
+        {% include "default/dependencies/top/external.html" %}
+        {% include "default/dependencies/top/internal.html" %}
+
+        {% if not SHOW_FOOTER %}
+            <style>
+                body {
+                    padding-bottom: 0;
+                }
+            </style>
+        {% endif %}
+
+        {% if not SHOW_NAVBAR %}
+            <style>
+                body {
+                    padding-top: 0;
+                }
+            </style>
+        {% endif %}
+
+        {% block CSS %}{% endblock %}
+        {% block JS_TOP %}{% endblock %}
+    </head>
+
+    <body>
+        {% if SHOW_NAVBAR %}
+            {% include "default/navbar/main.html" %}
+        {% endif %}
+
+        <div class="container" id="dead-container">
+            {% include "default/messages.html" %}
+            {% block BODY %}{% endblock %}
+        </div>
+
+        {% if SHOW_FOOTER %}
+            {% include "default/footer/main.html" %}
+        {% endif %}
+
+        <script type="text/javascript">
+            var STATIC_URL = "{% static '' %}";
+        </script>
+
+        {% include "default/dependencies/bottom/external.html" %}
+        {% include "default/dependencies/bottom/internal.html" %}
+
+        {# {% include "default/messages-js.html" %} #}
+
+        {% block JS_BOTTOM %}{% endblock %}
+    </body>
+</html>

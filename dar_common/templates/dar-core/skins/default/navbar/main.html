@@ -1,0 +1,24 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" id="dpf-navbar-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dpf-navbar-top-collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            {% if SHOW_NAVBAR_TITLE %}
+                <a class="navbar-brand" href="{% url 'home' %}">{{ NAVBAR_TITLE }}</a>
+            {% endif %}
+        </div>
+        <div class="collapse navbar-collapse" id="dpf-navbar-top-collapse">
+            <ul class="nav navbar-nav">
+                {% include "default/navbar/home.html" %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% include "default/navbar/contact.html" %}
+                {% include 'dead-users/navbar.html' %}
+            </ul>
+        </div>
+    </div>
+</nav>
